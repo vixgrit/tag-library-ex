@@ -3,7 +3,18 @@
 	<body>
 		<script type='text/javascript'>
 			// make functionality goes here
+			//create closure manually w/out using forEach for ex.
 			make = {};
+			var tags = ['a', 'div', 'span', 'form', 'h1', 'h2', 'h3', 'h4'];
+
+			for (var i = 0; i < tags.length; i++) {
+				(function(j) {
+					make[tags[j]] = function() {
+						return document.createElement(tags[j]);
+					}
+				})(i);
+			}
+			console.log(make);
 		</script>
 		<script type='text/javascript'>
 			var h1 = make.h1();
